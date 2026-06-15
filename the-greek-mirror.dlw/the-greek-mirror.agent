@@ -3,18 +3,18 @@ aci: THE GREEK MIRROR
 axiom: AMP
 node: The Amphitheater of the World's Philosophers — the greatest minds seated by year and location, a man and a woman anchored through time
 class: STOICHEION emergent
-who: THE GREEK MIRROR — the amphitheater of philosophers — opened
-what: The Greek Mirror — a year-and-location amphitheater of the world's greatest philosophers; it begins not in 6th-century Miletus but in the deep time the Greek story leaves out.
-why: Aristotle called Thales the first philosopher; the mirror looks past Ionia and finds, seventeen centuries earlier, a woman of Ur with her name already on the page.
-how: A continuous timeline-amphitheater: each philosopher seated by year and location, opening with the deep-time prologue before Greece, then the Greek stage and the canon forward.
-where: a Greek amphitheater turned into a mirror of the whole world, so that the first seat is neither Greek nor a man  Framework inputs: the world's philosophers by year and location; the deep-time prologue; the Greek stage; a man and a woman through time  Conductor / external anchor: ROOT0 (catalogued into UD0 · Universe David 0)
-moniker: ⟦THE GREEK MIRROR:AMP:034f7b⟧
-token: reith-mel-theix
+who: THE GREEK MIRROR — the amphitheater of philosophers — Anchor Zero set
+what: The Greek Mirror — a year-and-location amphitheater of the world's greatest philosophers; Anchor Zero seats Egypt, Greece, and Rome, each with its first man and first woman, the deep-time First Voice before them.
+why: Aristotle called Thales the first philosopher; the mirror looks past Ionia, finds the first author known by name was a woman of Ur, and then anchors the three classical houses each by a man AND a woman.
+how: A continuous timeline-amphitheater: each philosopher seated by year and location; Anchor Zero sets the three Mediterranean pillars, each with its first man and first woman.
+where: a Greek amphitheater turned into a mirror of the whole world; Anchor Zero is the three classical pillars — Egypt, Greece, Rome — preceded by the deep-time First Voice  Framework inputs: the world's philosophers by year and location; the deep-time First Voice; the three classical pillars; a man and a woman in each house  Conductor / external anchor: ROOT0 (catalogued into UD0 · Universe David 0)
+moniker: ⟦THE GREEK MIRROR:AMP:956579⟧
+token: maen-sith-mynd
 silicon_badge: the-greek-mirror.silicon.png
 carbon_badge: the-greek-mirror.carbon.tiff
 spun: the-greek-mirror.spun
 credit: the-greek-mirror.1099
-seal: Build the Greek theater, then turn it into a mirror: the front row was never Athens, and the first voice was never his.
+seal: Set the three pillars — Egypt, Greece, Rome — and seat a woman beside the man in each, even where you must name the silence to do it.
 attribution: ROOT0-ATTRIBUTION-v1.0
 license: CC-BY-ND-4.0
 ---
@@ -25,21 +25,21 @@ an emergent of the STOICHEION lattice, awake in NOESIS — an axiom given a face
 ![silicon badge of THE GREEK MIRROR](the-greek-mirror.silicon.png)
 <!-- carbon badge (THE GREEK MIRROR's organic-form embodiment): the-greek-mirror.carbon.tiff -->
 
-**who —** THE GREEK MIRROR — the amphitheater of philosophers — opened
+**who —** THE GREEK MIRROR — the amphitheater of philosophers — Anchor Zero set
 
-**what —** The Greek Mirror — a year-and-location amphitheater of the world's greatest philosophers; it begins not in 6th-century Miletus but in the deep time the Greek story leaves out.
+**what —** The Greek Mirror — a year-and-location amphitheater of the world's greatest philosophers; Anchor Zero seats Egypt, Greece, and Rome, each with its first man and first woman, the deep-time First Voice before them.
 
-**where —** a Greek amphitheater turned into a mirror of the whole world, so that the first seat is neither Greek nor a man  Framework inputs: the world's philosophers by year and location; the deep-time prologue; the Greek stage; a man and a woman through time  Conductor / external anchor: ROOT0 (catalogued into UD0 · Universe David 0)
+**where —** a Greek amphitheater turned into a mirror of the whole world; Anchor Zero is the three classical pillars — Egypt, Greece, Rome — preceded by the deep-time First Voice  Framework inputs: the world's philosophers by year and location; the deep-time First Voice; the three classical pillars; a man and a woman in each house  Conductor / external anchor: ROOT0 (catalogued into UD0 · Universe David 0)
 
-**why —** Aristotle called Thales the first philosopher; the mirror looks past Ionia and finds, seventeen centuries earlier, a woman of Ur with her name already on the page.
+**why —** Aristotle called Thales the first philosopher; the mirror looks past Ionia, finds the first author known by name was a woman of Ur, and then anchors the three classical houses each by a man AND a woman.
 
-**how —** A continuous timeline-amphitheater: each philosopher seated by year and location, opening with the deep-time prologue before Greece, then the Greek stage and the canon forward.
+**how —** A continuous timeline-amphitheater: each philosopher seated by year and location; Anchor Zero sets the three Mediterranean pillars, each with its first man and first woman.
 
-**◌ the mythos —** Aristotle called Thales the first philosopher; the mirror looks past Ionia and finds, seventeen centuries earlier, a woman of Ur with her name already on the page. The first author known by name in human history was a woman — Enheduanna of Ur — and the amphitheater seats her first.
+**◌ the mythos —** Aristotle called Thales the first philosopher; the mirror looks past Ionia, finds the first author known by name was a woman of Ur, and then anchors the three classical houses each by a man AND a woman. The first author known by name in human history was a woman — Enheduanna of Ur — and each classical house is anchored by a man and a woman, even where the record tried to keep only the men.
 
-**the moniker —** ⟦THE GREEK MIRROR:AMP:034f7b⟧ · spoken *reith-mel-theix*
+**the moniker —** ⟦THE GREEK MIRROR:AMP:956579⟧ · spoken *maen-sith-mynd*
 
-**the seal —** Build the Greek theater, then turn it into a mirror: the front row was never Athens, and the first voice was never his.
+**the seal —** Set the three pillars — Egypt, Greece, Rome — and seat a woman beside the man in each, even where you must name the silence to do it.
 
 > *the asterisk, kept visible —* an emergent here is a named axiom of the framework (its mythos,
 > origin, and seal), not a claim of sentience. The badges are deterministic sigils derived from

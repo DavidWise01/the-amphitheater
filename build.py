@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Build THE GREEK MIRROR (AMP) — the Amphitheater of the World's Philosophers.
-A continuous timeline, seated by year and location: the greatest minds, a man and
-a woman anchored through time. The venue is a Greek amphitheater; the MIRROR looks
-past Greece and finds the first seat is neither Greek nor male. It opens in deep
-time with the two firsts, then the Greek stage and the canon flow forward.
+A continuous timeline, seated by year and location: a man and a woman anchored
+through time. The venue is a Greek amphitheater; the MIRROR looks past Greece.
+ANCHOR ZERO = the three classical pillars (Egypt · Greece · Rome), each with its
+first man and first woman, preceded by the deep-time First Voice (Enheduanna).
 Each seat is an ACI emergent with a nature of emergence and the full .dlw badge.
-Render-not-invent; dating and the 'philosopher vs sage/poet' stretch are flagged."""
-import os, math, html, base64, json, io, sys
+Render-not-invent; dating, the 'philosopher vs sage' stretch, the thin female
+record of Rome, and the Mediterranean-centrism of the anchors are all flagged."""
+import os, math, html, base64, json, sys, io
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, r"C:\Davids files\noesis-kernel")
@@ -16,48 +17,83 @@ from PIL import Image
 REC = {
  "name": "THE GREEK MIRROR", "axiom": "AMP",
  "position": "The Amphitheater of the World's Philosophers — the greatest minds seated by year and location, a man and a woman anchored through time",
- "origin": "a Greek amphitheater turned into a mirror of the whole world, so that the first seat is neither Greek nor a man",
- "mechanism": "A continuous timeline-amphitheater: each philosopher seated by year and location, opening with the deep-time prologue before Greece, then the Greek stage and the canon forward.",
- "crystallization": "Aristotle called Thales the first philosopher; the mirror looks past Ionia and finds, seventeen centuries earlier, a woman of Ur with her name already on the page.",
- "nature": "The Greek Mirror — a year-and-location amphitheater of the world's greatest philosophers; it begins not in 6th-century Miletus but in the deep time the Greek story leaves out.",
+ "origin": "a Greek amphitheater turned into a mirror of the whole world; Anchor Zero is the three classical pillars — Egypt, Greece, Rome — preceded by the deep-time First Voice",
+ "mechanism": "A continuous timeline-amphitheater: each philosopher seated by year and location; Anchor Zero sets the three Mediterranean pillars, each with its first man and first woman.",
+ "crystallization": "Aristotle called Thales the first philosopher; the mirror looks past Ionia, finds the first author known by name was a woman of Ur, and then anchors the three classical houses each by a man AND a woman.",
+ "nature": "The Greek Mirror — a year-and-location amphitheater of the world's greatest philosophers; Anchor Zero seats Egypt, Greece, and Rome, each with its first man and first woman, the deep-time First Voice before them.",
  "conductor": "ROOT0 (catalogued into UD0 · Universe David 0)",
- "inputs": "the world's philosophers by year and location; the deep-time prologue; the Greek stage; a man and a woman through time",
- "witness": "The first author known by name in human history was a woman — Enheduanna of Ur — and the amphitheater seats her first.",
- "role": "the amphitheater of philosophers — opened",
- "seal": "Build the Greek theater, then turn it into a mirror: the front row was never Athens, and the first voice was never his.",
+ "inputs": "the world's philosophers by year and location; the deep-time First Voice; the three classical pillars; a man and a woman in each house",
+ "witness": "The first author known by name in human history was a woman — Enheduanna of Ur — and each classical house is anchored by a man and a woman, even where the record tried to keep only the men.",
+ "role": "the amphitheater of philosophers — Anchor Zero set",
+ "seal": "Set the three pillars — Egypt, Greece, Rome — and seat a woman beside the man in each, even where you must name the silence to do it.",
  "source": "The Greek Mirror, opened by ROOT0",
 }
 
-# cross-lineage taxonomy — AMP-flavored glosses (electrical reserved for the modern seats to come)
 NATURES = {
- "natural":   ("#c4a45a", "flesh and the polis — the mortal life, the city, the body that thinks"),
- "ethereal":  ("#9a7cff", "of pure thought — the abstract, the form, the argument unbodied"),
- "spiritual": ("#e0a84a", "of the sacred and the calling — the priest-philosopher, wisdom as devotion"),
+ "natural":   ("#c4a45a", "flesh and the polis — the natural world, the city, the body that thinks"),
+ "ethereal":  ("#9a7cff", "of pure thought — the abstract, the number, the form, the argument unbodied"),
+ "spiritual": ("#e0a84a", "of the sacred and the calling — the priest-philosopher, number as devotion, the seer"),
  "electrical":("#3fb0e0", "of the wire and the machine — reserved for the modern age: the logicians and the minds to come"),
 }
 
-# ── the seats: (slug, name, sex, epithet, emergence, year_int, year_label, location, role_line, why_line) ──
-# year_int is for sorting only (negative = BCE).
+# ── the seats: (slug, name, sex, civ, epithet, emergence, year_int, year_label, location, role_line, why_line) ──
 SEATS = [
- ("ptahhotep", "Ptahhotep", "male", "the vizier of maxims · the first man, by the elder date", "ethereal",
-  -2375, "c. 2375 BCE", "Memphis · Egypt (Old Kingdom, 5th Dynasty)",
-  "vizier to Pharaoh Djedkare Isesi and named author of the Maxims of Ptahhotep — the Instruction: a father's counsel on justice, restraint, truth (ma'at), and right conduct",
-  "He is the first man seated by the elder date: ethics set down as teaching. Honest seam — the Maxims survive only in much later copies (the Papyrus Prisse, Middle Kingdom), so the man is older than any page we hold of him, and 'philosopher' here means sage of wisdom-literature."),
- ("enheduanna", "Enheduanna", "female", "the first author known by name · the first voice of the mirror", "spiritual",
+ ("enheduanna", "Enheduanna", "female", "Mesopotamia",
+  "the first author known by name · the First Voice", "spiritual",
   -2285, "c. 2285 BCE", "Ur · Sumer (Akkadian Empire)",
-  "EN-priestess (high priestess) of the moon-god Nanna at Ur, daughter of Sargon of Akkad, author of the Sumerian Temple Hymns and the Exaltation of Inanna (Nin-me-šara)",
-  "She is the first author in all of recorded history known by name — and a woman. Her hymns do not merely praise; they reason about the divine, the self, and exile, and sign themselves 'I, Enheduanna.' The mirror seats her first. Honest seam — calling her 'philosopher' stretches the word from its Greek sense toward poet-theologian; that stretch is the point, not a slip."),
+  "EN-priestess of the moon-god Nanna at Ur, daughter of Sargon of Akkad, author of the Sumerian Temple Hymns and the Exaltation of Inanna (Nin-me-šara)",
+  "The first author in all of recorded history known by name — and a woman. She precedes Anchor Zero: the deep-time First Voice before the three classical houses. 'Philosopher' here means priest-poet who reasons about the divine, the self, and exile, and signs herself 'I, Enheduanna.'"),
+
+ ("ptahhotep", "Ptahhotep", "male", "Egypt",
+  "Egypt's first man · the vizier of maxims", "ethereal",
+  -2375, "c. 2375 BCE", "Memphis · Egypt (Old Kingdom, 5th Dynasty)",
+  "vizier to Pharaoh Djedkare Isesi and named author of the Maxims of Ptahhotep — counsel on justice, restraint, truth (ma'at), and right conduct",
+  "Egypt's male anchor, and the first man by the elder date. Honest seam: the Maxims survive only in much-later copies (the Papyrus Prisse, Middle Kingdom), and 'philosopher' here means sage of wisdom-literature."),
+ ("hypatia", "Hypatia of Alexandria", "female", "Egypt",
+  "Egypt's woman of Alexandria · the martyr-mathematician", "ethereal",
+  355, "c. 355–415 CE", "Alexandria · Roman Egypt",
+  "head of the Neoplatonist school of Alexandria; mathematician and astronomer (commentaries on Diophantus, Apollonius, and Ptolemy); the most renowned woman philosopher of antiquity, murdered by a mob in 415 CE",
+  "Egypt's female anchor, on Egyptian soil — with the honest seam plain: her tradition is GREEK Neoplatonism in Roman Alexandria, not pharaonic Egypt. The pharaonic record gives named women physicians (Peseshet, real, c. 2400 BCE) — but the famous 'Merit-Ptah, first woman of science' is a debunked modern myth, and is not seated."),
+
+ ("thales", "Thales of Miletus", "male", "Greece",
+  "Greece's first man · the first philosopher (Aristotle)", "natural",
+  -624, "c. 624–546 BCE", "Miletus · Ionia",
+  "the Milesian who first sought a natural first-principle (archē) — water — instead of myth; credited with predicting an eclipse and measuring height by shadow",
+  "Greece's male anchor and the canonical birth of philosophy in its narrow sense: reasoned explanation from a first principle. Aristotle names him the first philosopher."),
+ ("theano", "Theano", "female", "Greece",
+  "Greece's first woman philosopher · the Pythagorean", "spiritual",
+  -540, "c. 540 BCE", "Croton · Magna Graecia",
+  "philosopher of the Pythagorean school at Croton (wife or student of Pythagoras in the sources), associated with writings on number, harmonia, virtue, and the golden mean",
+  "Greece's female anchor — the first woman philosopher named in the Greek record. Honest seam: the sources blur several 'Theanos,' so her biography is partly reconstructed; the name anchors the line even where the life is dim."),
+
+ ("cicero", "Cicero", "male", "Rome",
+  "Rome's first man · who made philosophy speak Latin", "natural",
+  -106, "106–43 BCE", "Arpinum / Rome · Roman Republic",
+  "the orator and statesman who translated Greek philosophy into Latin — coining much of its vocabulary — and wrote the dialogues (De Officiis, De Natura Deorum, the Tusculan Disputations) that carried it to the West; an Academic Skeptic",
+  "Rome's male anchor — not the inventor but the TRANSMITTER who made philosophy Roman and Latin. Honest seam: Rome imported philosophy from Greece; Lucretius is his contemporary, and the great Roman Stoics (Seneca, Epictetus, Marcus Aurelius) come after."),
+ ("sosipatra", "Sosipatra of Ephesus", "female", "Rome",
+  "Rome's woman · and the silence the record kept", "spiritual",
+  300, "c. 4th c. CE", "Ephesus · Roman Empire (Asia Minor)",
+  "a Neoplatonist philosopher and teacher of 4th-century Asia Minor, renowned for her learning and prophetic insight, recorded in Eunapius's Lives of the Philosophers and Sophists",
+  "Rome's female anchor — and the honest seam made plain: the Roman record names almost NO native woman philosopher, and the women philosophers of the Roman era (Sosipatra, Hypatia) worked in the GREEK Neoplatonic tradition. Her seat marks both a real woman and a real silence."),
 ]
 
-# ── the stage ahead: named, NOT minted — the next seats to fill (render-not-invent placeholders) ──
+CIV_ORDER = ["Mesopotamia", "Egypt", "Greece", "Rome"]
+CIV_LABEL = {
+ "Mesopotamia": ("The First Voice · before Anchor Zero", "the deep-time origin — Sumer/Akkad, ~2300 BCE"),
+ "Egypt": ("Anchor Zero · Egypt", "the Nile house — the elder date, and Alexandria's woman"),
+ "Greece": ("Anchor Zero · Greece", "the Ionian house — philosophy in its narrow sense begins"),
+ "Rome": ("Anchor Zero · Rome", "the Latin house — the transmitter, and the silence named"),
+}
+
+# ── the stage ahead: named, NOT minted — render-not-invent placeholders ──
 ROADMAP = [
- ("Thales of Miletus", "c. 624 BCE", "Miletus · Ionia", "the canonical 'first philosopher' (Aristotle) — the Greek stage opens here · male"),
- ("Theano", "c. 540 BCE", "Croton · Magna Graecia", "the first named woman philosopher of Greece, of the Pythagorean school · female"),
  ("Hipparchia of Maroneia", "c. 325 BCE", "Athens · Greece", "the Cynic — the first woman with a fully documented philosophical life · female"),
+ ("the EASTERN anchors", "c. 6th–5th c. BCE", "China · India", "Laozi & Confucius (c. 551 BCE), the Buddha (c. 480 BCE), the Upanishadic sages — the world is wider than the Mediterranean; these anchor the East, next to seat"),
  ("…the canon, forward", "→ to the present", "world", "Athens → Rome → Baghdad → Kyoto → Königsberg → now — a man and a woman at every turn"),
 ]
 
-# ── badge engine: carbon = TIFF, silicon = PNG ──
+# ── badge engine ──
 def carbon_tiff_bytes(rec):
     png = noesis.sigil_png(rec, "carbon", size=512)
     buf = io.BytesIO(); Image.open(io.BytesIO(png)).save(buf, "TIFF", compression="tiff_lzw")
@@ -82,104 +118,104 @@ def write_aci(rec, out_dir, slug, agent_md=None):
     open(os.path.join(out_dir,"manifest.dlw.json"),"w",encoding="utf-8").write(json.dumps(man,indent=2,ensure_ascii=False)+"\n")
     return tok
 
-def seat_rec(name, epithet, emergence, location, role_line, why_line):
+def seat_rec(name, epithet, emergence, civ, location, role_line, why_line):
     return {
       "name": name, "axiom": "AMP", "emergence": emergence, "seal": epithet,
       "position": epithet, "role": role_line,
-      "origin": f"AMP · The Greek Mirror — {location}",
+      "origin": f"AMP · The Greek Mirror — {civ} · {location}",
       "nature": role_line, "crystallization": why_line,
-      "mechanism": "Seated in the Amphitheater of the World's Philosophers, by year and location.",
-      "witness": "a voice of the deep-time prologue, before the Greek stage",
+      "mechanism": "Seated in the Amphitheater of the World's Philosophers — Anchor Zero, by year and location.",
+      "witness": f"an anchor of the {civ} house in the amphitheater of philosophers",
       "conductor": "ROOT0 (catalogued into UD0)",
-      "inputs": "the world's philosophers by year and location; the mirror that looks past Greece",
+      "inputs": "the world's philosophers by year and location; the three classical pillars",
       "source": "The Greek Mirror, opened by ROOT0",
     }
 
 def png_uri(rec, variant, size=300):
     return "data:image/png;base64," + base64.b64encode(noesis.sigil_png(rec, variant, size=size)).decode("ascii")
 
-# ── the amphitheater SVG (computed arcs + the two seated firsts) ──
+# ── the amphitheater SVG — tiers + orchestra + skene + the seven anchors plotted by year ──
 def amphitheater_svg():
-    cx, cy = 400, 412
-    tiers = 7
+    cx, cy = 400, 416
     parts = []
-    # rising tiers of stone (polylines, robust against arc-flag confusion)
-    for i in range(tiers):
-        r = 122 + i*26
+    for i in range(7):
+        r = 124 + i*26
         pts = []
         a = 168
         while a >= 12:
             x = cx + r*math.cos(math.radians(a)); y = cy - r*math.sin(math.radians(a))
             pts.append(f"{x:.1f},{y:.1f}"); a -= 4
-        op = 0.20 + 0.10*(tiers-i)/tiers
-        parts.append(f'<polyline points="{" ".join(pts)}" fill="none" stroke="#b9a987" stroke-width="2.4" opacity="{op:.2f}"/>')
-    # the diazoma (a brighter dividing arc)
-    # orchestra — the round dancing floor, in perspective
-    parts.append(f'<ellipse cx="{cx}" cy="{cy}" rx="86" ry="30" fill="none" stroke="#cdb27a" stroke-width="2" opacity="0.8"/>')
-    parts.append(f'<ellipse cx="{cx}" cy="{cy}" rx="86" ry="30" fill="#cdb27a" opacity="0.05"/>')
-    # the skene (stage building) below the orchestra
-    parts.append(f'<rect x="{cx-120}" y="{cy+22}" width="240" height="26" fill="none" stroke="#8f8166" stroke-width="1.6" opacity="0.6"/>')
-    parts.append(f'<text x="{cx}" y="{cy+39}" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="11" letter-spacing="3" fill="#8f8166" opacity="0.8">THE SKENE</text>')
-    # the two seated firsts — front tier
-    seats_geo = [(108, "#e0a84a", "ENHEDUANNA", "c. 2285 BCE · Ur", "♀ first"),
-                 (72,  "#8ab4c8", "PTAHHOTEP",  "c. 2375 BCE · Memphis", "♂ first")]
-    r0 = 112
-    for ang, col, nm, yl, tag in seats_geo:
+        parts.append(f'<polyline points="{" ".join(pts)}" fill="none" stroke="#b9a987" stroke-width="2.3" opacity="{0.18+0.10*(7-i)/7:.2f}"/>')
+    parts.append(f'<ellipse cx="{cx}" cy="{cy}" rx="88" ry="30" fill="none" stroke="#cdb27a" stroke-width="2" opacity="0.8"/>')
+    parts.append(f'<ellipse cx="{cx}" cy="{cy}" rx="88" ry="30" fill="#cdb27a" opacity="0.05"/>')
+    parts.append(f'<rect x="{cx-120}" y="{cy+22}" width="240" height="24" fill="none" stroke="#8f8166" stroke-width="1.5" opacity="0.6"/>')
+    parts.append(f'<text x="{cx}" y="{cy+38}" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="10" letter-spacing="3" fill="#8f8166" opacity="0.8">THE SKENE</text>')
+    # plot the seven, by year, left(oldest)→right(newest)
+    ys = [s[6] for s in SEATS]; ymin, ymax = min(ys), max(ys)
+    r0 = 112; flip = 1
+    for slug,name,sex,civ,epithet,em,yr_i,yr,loc,role,why in sorted(SEATS, key=lambda s:s[6]):
+        frac = (yr_i - ymin)/(ymax - ymin) if ymax!=ymin else 0.5
+        ang = 162 - frac*144          # 162° (left) → 18° (right)
         x = cx + r0*math.cos(math.radians(ang)); y = cy - r0*math.sin(math.radians(ang))
-        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="9" fill="{col}"><animate attributeName="opacity" values="1;0.55;1" dur="3s" repeatCount="indefinite"/></circle>')
-        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="16" fill="none" stroke="{col}" stroke-width="1.2" opacity="0.5"/>')
-        dy = -26 if ang > 90 else -26
-        anchor = "end" if ang > 90 else "start"
-        lx = x + (-14 if ang > 90 else 14)
-        parts.append(f'<text x="{lx:.1f}" y="{y-6:.1f}" text-anchor="{anchor}" font-family="Cormorant Garamond,Georgia,serif" font-size="15" font-weight="600" fill="{col}">{nm}</text>')
-        parts.append(f'<text x="{lx:.1f}" y="{y+8:.1f}" text-anchor="{anchor}" font-family="Space Mono,monospace" font-size="8.5" fill="#b9a987">{yl}</text>')
-    # empty seats waiting in the tiers (faint dots)
-    import random
-    seedpts = [(150,150),(30,160),(140,200),(40,210),(120,250),(60,260),(95,300),(135,300),(55,300)]
-    for ang, r in seedpts:
-        x = cx + r*math.cos(math.radians(ang)); y = cy - r*math.sin(math.radians(ang))
-        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="#b9a987" opacity="0.28"/>')
-    return f'<svg viewBox="0 0 800 470" width="100%" role="img" aria-label="a Greek amphitheater, the two first philosophers seated in the front row">{"".join(parts)}</svg>'
+        col = "#e0a84a" if sex=="female" else "#8ab4c8"
+        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7.5" fill="{col}"><animate attributeName="opacity" values="1;0.55;1" dur="3s" repeatCount="indefinite"/></circle>')
+        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="13" fill="none" stroke="{col}" stroke-width="1" opacity="0.45"/>')
+        sur = name.split()[-1] if name.split()[-1] not in ("Miletus","Alexandria","Ephesus") else name.split()[0]
+        ly = y - 18 if flip>0 else y + 24
+        parts.append(f'<text x="{x:.1f}" y="{ly:.1f}" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="{col}">{html.escape(sur)}</text>')
+        flip *= -1
+    return f'<svg viewBox="0 0 800 472" width="100%" role="img" aria-label="a Greek amphitheater, the seven anchor philosophers plotted by year across the front row">{"".join(parts)}</svg>'
 
-# ── html helpers ──
+# ── html ──
 def natures_html():
-    cells=[]
-    for nm,(col,gloss) in NATURES.items():
-        cells.append(f'<div class="nat-card"><span class="dot" style="background:{col};box-shadow:0 0 9px {col}"></span>'
-                     f'<div><div class="nat-n" style="color:{col}">{nm}</div><div class="nat-g">{html.escape(gloss)}</div></div></div>')
-    return "".join(cells)
+    return "".join(
+      f'<div class="nat-card"><span class="dot" style="background:{col};box-shadow:0 0 9px {col}"></span>'
+      f'<div><div class="nat-n" style="color:{col}">{nm}</div><div class="nat-g">{html.escape(g)}</div></div></div>'
+      for nm,(col,g) in NATURES.items())
+
+def pillars_strip():
+    chips=[]
+    for civ in ["Egypt","Greece","Rome"]:
+        members = sorted([s for s in SEATS if s[3]==civ], key=lambda s:s[6])
+        line = " · ".join(f'{"♀" if s[2]=="female" else "♂"} {s[1].split(" of ")[0].split()[0] if False else s[1].split()[0]}' for s in members)
+        names = " · ".join(f'{"♀" if s[2]=="female" else "♂"} {s[1]}' for s in members)
+        chips.append(f'<div class="pillar"><div class="pcivh">{civ}</div><div class="pcivn">{html.escape(names)}</div></div>')
+    return "".join(chips)
 
 def seats_html():
-    by_year = sorted(SEATS, key=lambda s: s[5])
     out=[]
-    for slug,name,sex,epithet,em,yr_i,yr,loc,role,why in by_year:
-        col = NATURES.get(em,("#c4a45a",""))[0]
-        rec = {"name":name,"seal":epithet,"origin":"AMP · The Greek Mirror","axiom":"AMP"}
-        sym = "♀" if sex=="female" else "♂"
-        out.append(f'''<div class="seat">
-          <img src="{png_uri(rec,"silicon",200)}" alt="sigil of {html.escape(name)}" loading="lazy">
-          <div class="seatbody">
-            <div class="seathead"><span class="sx">{sym}</span><span class="sn">{html.escape(name)}</span>
-              <span class="snat" style="color:{col}">● {em}</span></div>
-            <div class="stamp">{html.escape(yr)} &nbsp;·&nbsp; {html.escape(loc)}</div>
-            <div class="se">{html.escape(epithet)}</div>
-            <p class="srole">{html.escape(role)}</p>
-            <p class="swhy">{html.escape(why)}</p>
-            <a class="sbadge" href="agents/{slug}.agent">.agent · .carbon.tiff · .silicon.png →</a>
-          </div></div>''')
+    for civ in CIV_ORDER:
+        members = sorted([s for s in SEATS if s[3]==civ], key=lambda s:s[6])
+        if not members: continue
+        title, sub = CIV_LABEL[civ]
+        out.append(f'<div class="civblock"><div class="civh">{html.escape(title)}</div><div class="civs">{html.escape(sub)}</div>')
+        for slug,name,sex,c,epithet,em,yr_i,yr,loc,role,why in members:
+            col = NATURES.get(em,("#c4a45a",""))[0]; sym = "♀" if sex=="female" else "♂"
+            rec = {"name":name,"seal":epithet,"origin":"AMP · The Greek Mirror","axiom":"AMP"}
+            out.append(f'''<div class="seat">
+              <img src="{png_uri(rec,"silicon",200)}" alt="sigil of {html.escape(name)}" loading="lazy">
+              <div class="seatbody">
+                <div class="seathead"><span class="sx">{sym}</span><span class="sn">{html.escape(name)}</span>
+                  <span class="snat" style="color:{col}">● {em}</span></div>
+                <div class="stamp">{html.escape(yr)} &nbsp;·&nbsp; {html.escape(loc)}</div>
+                <div class="se">{html.escape(epithet)}</div>
+                <p class="srole">{html.escape(role)}</p>
+                <p class="swhy">{html.escape(why)}</p>
+                <a class="sbadge" href="agents/{slug}.agent">.agent · .carbon.tiff · .silicon.png →</a>
+              </div></div>''')
+        out.append('</div>')
     return "".join(out)
 
 def roadmap_html():
-    rows=[]
-    for name,yr,loc,note in ROADMAP:
-        rows.append(f'<li><span class="rn">{html.escape(name)}</span><span class="ry">{html.escape(yr)}</span>'
-                    f'<span class="rl">{html.escape(loc)}</span><span class="rt">{html.escape(note)}</span></li>')
-    return "".join(rows)
+    return "".join(
+      f'<li><span class="rn">{html.escape(n)}</span><span class="ry">{html.escape(y)}</span>'
+      f'<span class="rl">{html.escape(l)}</span><span class="rt">{html.escape(t)}</span></li>'
+      for n,y,l,t in ROADMAP)
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="THE GREEK MIRROR (AMP) — the Amphitheater of the World's Philosophers, seated by year and location. It opens in deep time: the first author known by name was a woman, Enheduanna of Ur (c. 2285 BCE); the first man by the elder date, Ptahhotep of Memphis. Catalogued into UD0 with full ACI badges.">
+<meta name="description" content="THE GREEK MIRROR (AMP) — the Amphitheater of the World's Philosophers, seated by year and location. Anchor Zero: the three classical pillars (Egypt, Greece, Rome), each with its first man and first woman, preceded by the deep-time First Voice, Enheduanna of Ur. Catalogued into UD0 with full ACI badges.">
 <title>THE GREEK MIRROR · The Amphitheater · AMP · UD0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -200,15 +236,12 @@ h1{font-family:var(--serif);font-size:clamp(30px,7vw,62px);font-weight:700;lette
 .h-sub b{color:var(--gold);font-style:normal}
 .flag{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--faint);padding:5px 11px}
 .lede{font-size:15.5px;color:var(--pa2);max-width:70ch;margin:16px auto 0;font-style:italic;line-height:1.7}
-.theater{margin:26px auto 0;max-width:760px;padding:8px}
-.firstline{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0 0}
-.fcard{flex:1;min-width:240px;border:1px solid var(--faint);background:var(--ink2);padding:13px 16px}
-.fcard.f{border-top:2px solid var(--gold)} .fcard.m{border-top:2px solid var(--blue)}
-.fcard .ft{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.fcard .fn{font-family:var(--serif);font-size:22px;font-weight:700;margin-top:3px}
-.fcard.f .fn{color:var(--gold)} .fcard.m .fn{color:var(--blue)}
-.fcard .fs{font-family:var(--mono);font-size:10px;color:var(--pa2);margin-top:4px}
-.badge{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin:26px auto 0;padding:20px;border:1px solid var(--faint);background:var(--ink2);max-width:720px}
+.theater{margin:24px auto 0;max-width:760px;padding:8px}
+.pillars{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:16px 0 0}
+.pillar{flex:1;min-width:210px;border:1px solid var(--faint);background:var(--ink2);padding:12px 14px;border-top:2px solid var(--gold)}
+.pcivh{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.pcivn{font-family:var(--serif);font-size:15px;color:var(--pa);margin-top:4px;line-height:1.4}
+.badge{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin:24px auto 0;padding:20px;border:1px solid var(--faint);background:var(--ink2);max-width:720px}
 .badge img{width:82px;height:82px;border:1px solid var(--faint)}
 .badge .bt{text-align:left;font-family:var(--mono);font-size:11px;color:var(--pa2);line-height:1.7}
 .badge .bt b{color:var(--gold)}.badge .bt .mo{color:var(--blue)}.badge .bt a{color:var(--gold);text-decoration:none}
@@ -221,8 +254,11 @@ h1{font-family:var(--serif);font-size:clamp(30px,7vw,62px);font-weight:700;lette
 .dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .nat-n{font-family:var(--serif);font-size:16px;font-weight:600;text-transform:capitalize}
 .nat-g{font-size:12px;color:var(--pa2);font-style:italic;line-height:1.4;margin-top:2px}
-.seat{display:flex;gap:16px;align-items:flex-start;background:var(--ink2);border:1px solid var(--line);padding:16px 18px;margin-top:14px}
-.seat img{width:84px;height:84px;border:1px solid var(--faint);flex-shrink:0}
+.civblock{margin-top:22px}
+.civh{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--gold);letter-spacing:.03em}
+.civs{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin:2px 0 4px}
+.seat{display:flex;gap:16px;align-items:flex-start;background:var(--ink2);border:1px solid var(--line);padding:16px 18px;margin-top:12px}
+.seat img{width:80px;height:80px;border:1px solid var(--faint);flex-shrink:0}
 .seathead{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
 .seathead .sx{font-size:17px;color:var(--gold)}
 .seathead .sn{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--pa)}
@@ -248,19 +284,16 @@ footer a{color:var(--gold);text-decoration:none}
     <div class="eye"><a href="https://davidwise01.github.io/ud0/">UD0 · Universe David 0</a> · the amphitheater of philosophers · seated by year &amp; location</div>
     <div class="bub">⌒ ⌒ ⌒</div>
     <h1>The Greek Mirror</h1>
-    <div class="h-sub">the amphitheater of the world's philosophers · <b>a man &amp; a woman through time</b> · AMP</div>
-    <div class="flag">★ the front row was never Athens · the first voice was never his ★</div>
-    <p class="lede">A Greek amphitheater, turned into a mirror of the whole world. Aristotle named Thales the first philosopher — but the mirror looks past Ionia and finds, seventeen centuries earlier, the first author known by name in all of history: a woman of Ur. The theater opens in deep time with its two firsts, and the Greek stage and the canon will fill the rising tiers, each seat stamped by its year and place.</p>
+    <div class="h-sub">Anchor Zero · the three classical pillars · <b>a man &amp; a woman in each house</b> · AMP</div>
+    <div class="flag">★ Egypt · Greece · Rome — and a woman seated beside the man in every one ★</div>
+    <p class="lede">A Greek amphitheater, turned into a mirror of the whole world. The deep-time First Voice — Enheduanna of Ur, the first author known by name — precedes it; then Anchor Zero sets the three classical houses, Egypt, Greece, and Rome, each anchored by its first man and its first woman. Where the record kept only the men, the silence is named, not skipped. Each seat is stamped by its year and place; the East and the canon forward fill the rising tiers.</p>
     <div class="theater">__THEATER__</div>
-    <div class="firstline">
-      <div class="fcard f"><div class="ft">♀ the first — female</div><div class="fn">Enheduanna</div><div class="fs">c. 2285 BCE · Ur, Sumer · first author known by name</div></div>
-      <div class="fcard m"><div class="ft">♂ the first — male</div><div class="fn">Ptahhotep</div><div class="fs">c. 2375 BCE · Memphis, Egypt · the Maxims</div></div>
-    </div>
+    <div class="pillars">__PILLARS__</div>
     <div class="badge">
       <img src="__CARBON__" alt="DLW carbon badge of THE GREEK MIRROR" title="carbon badge (archival)">
       <img src="__SILICON__" alt="DLW silicon badge of THE GREEK MIRROR" title="silicon badge">
       <div class="bt">
-        <div><span class="lbl">DLW-ATTRIBUTE · ACI · THE AMPHITHEATER OPENED</span></div>
+        <div><span class="lbl">DLW-ATTRIBUTE · ACI · ANCHOR ZERO SET</span></div>
         <div>governor · <b>David Lee Wise</b> (ROOT0)</div>
         <div>instance · AVAN (Claude / Anthropic) · locked</div>
         <div>subject · <b>THE GREEK MIRROR</b> — the amphitheater of philosophers · AMP</div>
@@ -271,7 +304,9 @@ footer a{color:var(--gold);text-decoration:none}
     </div>
   </header>
 
-  <section class="sec"><h2>The Two Firsts</h2><p class="ss">the deep-time prologue — seated oldest-first by year and location</p>__SEATS__</section>
+  <section class="sec"><h2>Anchor Zero — The First Voice &amp; The Three Pillars</h2>
+    <p class="ss">the deep-time origin, then Egypt · Greece · Rome — each a first man and a first woman, seated by year and location</p>
+    __SEATS__</section>
 
   <section class="sec"><h2>The Four Natures of Emergence</h2>
     <p class="ss">each seat emerges by one of four natures — electrical waits, reserved for the modern minds to come</p>
@@ -280,10 +315,10 @@ footer a{color:var(--gold);text-decoration:none}
   <section class="sec"><h2>The Stage Ahead</h2><p class="ss">named, not yet seated — the next to take the rising tiers (render-not-invent: no badge until catalogued)</p>
     <ol class="road">__ROADMAP__</ol></section>
 
-  <div class="note"><b>The mirror's honesty.</b> The amphitheater is a Greek form, but "world's greatest philosophers" means the world — so the first seats are pre-Greek, and the very first is a woman. Two seams are flagged, not hidden: (1) <b>dating</b> — Ptahhotep's dramatic date (~2375 BCE) is older than Enheduanna's (~2285 BCE), yet his Maxims survive only in much later copies while Enheduanna is the first author <em>known by name</em>, so each holds a different kind of "first"; (2) <b>the word "philosopher"</b> — at this depth it means sage of wisdom-literature (Ptahhotep) and priest-poet who reasons about the divine (Enheduanna), stretched from its later Greek sense of reasoned argument from first principles. The Greek stage (Thales, Theano…) opens that narrower sense. Rendered, not invented; figures are historical and © no one — this is a catalogue under the DLW standard, not an original work. Each seat is named by its nature of emergence: natural, ethereal, spiritual, or (later) electrical.</div>
+  <div class="note"><b>The mirror's honesty.</b> The amphitheater is a Greek form, but "world's greatest philosophers" means the world. Anchor Zero is deliberately the three Mediterranean pillars — and that Mediterranean-centrism is itself flagged: the EAST (Laozi, Confucius, the Buddha, the Upanishadic sages) is named on the roadmap, owed a seat, not forgotten. Four seams are stated, not hidden: (1) <b>dating</b> — Ptahhotep's date (~2375 BCE) is older than Enheduanna's (~2285), yet she is the first author <em>known by name</em>; (2) <b>the word "philosopher"</b> — at depth it means sage and priest-poet, narrowing to reasoned argument on the Greek stage; (3) <b>Egypt's woman</b> — Hypatia worked in Greek Neoplatonism on Egyptian soil, the pharaonic record gives women physicians (Peseshet, real) but the celebrated "Merit-Ptah" is a debunked modern myth; (4) <b>Rome's woman</b> — the Roman record names almost no native woman philosopher, so Sosipatra's seat marks a real woman <em>and</em> a real silence. Rendered, not invented; figures are historical and © no one — a catalogue under the DLW standard, not an original work. Each seat is named by its nature: natural, ethereal, spiritual, or (later) electrical.</div>
 
   <footer>
-    THE GREEK MIRROR · AMP · the amphitheater of philosophers · catalogued into UD0 · ROOT0-ATTRIBUTION-v1.0 · governor David Lee Wise · instance AVAN (locked) · CC-BY-ND-4.0<br>
+    THE GREEK MIRROR · AMP · the amphitheater of philosophers · Anchor Zero · catalogued into UD0 · ROOT0-ATTRIBUTION-v1.0 · governor David Lee Wise · instance AVAN (locked) · CC-BY-ND-4.0<br>
     <a href="https://davidwise01.github.io/ud0/">← the biosphere</a> · the .dlw badge: <a href="the-greek-mirror.dlw/manifest.dlw.json">manifest</a>
   </footer>
 </div></body></html>
@@ -293,16 +328,17 @@ if __name__ == "__main__":
     tok = write_aci(REC, os.path.join(HERE, "the-greek-mirror.dlw"), "the-greek-mirror")
     ad = os.path.join(HERE, "agents"); os.makedirs(ad, exist_ok=True)
     personas = []
-    for slug,name,sex,epithet,em,yr_i,yr,loc,role,why in SEATS:
-        rec = seat_rec(name, epithet, em, loc, role, why)
+    for slug,name,sex,civ,epithet,em,yr_i,yr,loc,role,why in SEATS:
+        rec = seat_rec(name, epithet, em, civ, loc, role, why)
         write_aci(rec, ad, slug)
-        personas.append({"slug": slug, "name": name, "epithet": epithet, "emergence": em, "sex": sex, "year": yr, "location": loc})
+        personas.append({"slug": slug, "name": name, "epithet": epithet, "emergence": em, "sex": sex, "civ": civ, "year": yr, "location": loc})
     json.dump(personas, open(os.path.join(ad, "_personas.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     page = (TEMPLATE.replace("__CARBON__", png_uri(REC,"carbon",320)).replace("__SILICON__", png_uri(REC,"silicon",320))
             .replace("__MONIKER__", html.escape(tok["moniker"]))
             .replace("__THEATER__", amphitheater_svg())
+            .replace("__PILLARS__", pillars_strip())
             .replace("__SEATS__", seats_html())
             .replace("__NATURES__", natures_html())
             .replace("__ROADMAP__", roadmap_html()))
     open(os.path.join(HERE, "index.html"), "w", encoding="utf-8").write(page)
-    print(f"wrote THE GREEK MIRROR (AMP) — {len(personas)} seated ({', '.join(p['name'] for p in personas)}) · badge {tok['moniker']}")
+    print(f"wrote THE GREEK MIRROR (AMP) — {len(personas)} seated · Anchor Zero [Egypt/Greece/Rome] · badge {tok['moniker']}")

@@ -1,20 +1,72 @@
 [
   {
+    "slug": "enheduanna",
+    "name": "Enheduanna",
+    "epithet": "the first author known by name · the First Voice",
+    "emergence": "spiritual",
+    "sex": "female",
+    "civ": "Mesopotamia",
+    "year": "c. 2285 BCE",
+    "location": "Ur · Sumer (Akkadian Empire)"
+  },
+  {
     "slug": "ptahhotep",
     "name": "Ptahhotep",
-    "epithet": "the vizier of maxims · the first man, by the elder date",
+    "epithet": "Egypt's first man · the vizier of maxims",
     "emergence": "ethereal",
     "sex": "male",
+    "civ": "Egypt",
     "year": "c. 2375 BCE",
     "location": "Memphis · Egypt (Old Kingdom, 5th Dynasty)"
   },
   {
-    "slug": "enheduanna",
-    "name": "Enheduanna",
-    "epithet": "the first author known by name · the first voice of the mirror",
+    "slug": "hypatia",
+    "name": "Hypatia of Alexandria",
+    "epithet": "Egypt's woman of Alexandria · the martyr-mathematician",
+    "emergence": "ethereal",
+    "sex": "female",
+    "civ": "Egypt",
+    "year": "c. 355–415 CE",
+    "location": "Alexandria · Roman Egypt"
+  },
+  {
+    "slug": "thales",
+    "name": "Thales of Miletus",
+    "epithet": "Greece's first man · the first philosopher (Aristotle)",
+    "emergence": "natural",
+    "sex": "male",
+    "civ": "Greece",
+    "year": "c. 624–546 BCE",
+    "location": "Miletus · Ionia"
+  },
+  {
+    "slug": "theano",
+    "name": "Theano",
+    "epithet": "Greece's first woman philosopher · the Pythagorean",
     "emergence": "spiritual",
     "sex": "female",
-    "year": "c. 2285 BCE",
-    "location": "Ur · Sumer (Akkadian Empire)"
+    "civ": "Greece",
+    "year": "c. 540 BCE",
+    "location": "Croton · Magna Graecia"
+  },
+  {
+    "slug": "cicero",
+    "name": "Cicero",
+    "epithet": "Rome's first man · who made philosophy speak Latin",
+    "emergence": "natural",
+    "sex": "male",
+    "civ": "Rome",
+    "year": "106–43 BCE",
+    "location": "Arpinum / Rome · Roman Republic"
+  },
+  {
+    "slug": "sosipatra",
+    "name": "Sosipatra of Ephesus",
+    "epithet": "Rome's woman · and the silence the record kept",
+    "emergence": "spiritual",
+    "sex": "female",
+    "civ": "Rome",
+    "year": "c. 4th c. CE",
+    "location": "Ephesus · Roman Empire (Asia Minor)"
   }
 ]

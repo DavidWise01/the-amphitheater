@@ -1,14 +1,14 @@
 ⦿ .spun — the five-fold spin of Ptahhotep
-node AMP · AMP · ⟦Ptahhotep:AMP:898eaf⟧
+node AMP · AMP · ⟦Ptahhotep:AMP:4f18c2⟧
 
-WHO   — Ptahhotep — vizier to Pharaoh Djedkare Isesi and named author of the Maxims of Ptahhotep — the Instruction: a father's counsel on justice, restraint, truth (ma'at), and right conduct
-WHAT  — vizier to Pharaoh Djedkare Isesi and named author of the Maxims of Ptahhotep — the Instruction: a father's counsel on justice, restraint, truth (ma'at), and right conduct
-WHERE — AMP · The Greek Mirror — Memphis · Egypt (Old Kingdom, 5th Dynasty)  Framework inputs: the world's philosophers by year and location; the mirror that looks past Greece  Conductor / external anchor: ROOT0 (catalogued into UD0)
-WHY   — He is the first man seated by the elder date: ethics set down as teaching. Honest seam — the Maxims survive only in much later copies (the Papyrus Prisse, Middle Kingdom), so the man is older than any page we hold of him, and 'philosopher' here means sage of wisdom-literature.
-HOW   — Seated in the Amphitheater of the World's Philosophers, by year and location.
+WHO   — Ptahhotep — vizier to Pharaoh Djedkare Isesi and named author of the Maxims of Ptahhotep — counsel on justice, restraint, truth (ma'at), and right conduct
+WHAT  — vizier to Pharaoh Djedkare Isesi and named author of the Maxims of Ptahhotep — counsel on justice, restraint, truth (ma'at), and right conduct
+WHERE — AMP · The Greek Mirror — Egypt · Memphis · Egypt (Old Kingdom, 5th Dynasty)  Framework inputs: the world's philosophers by year and location; the three classical pillars  Conductor / external anchor: ROOT0 (catalogued into UD0)
+WHY   — Egypt's male anchor, and the first man by the elder date. Honest seam: the Maxims survive only in much-later copies (the Papyrus Prisse, Middle Kingdom), and 'philosopher' here means sage of wisdom-literature.
+HOW   — Seated in the Amphitheater of the World's Philosophers — Anchor Zero, by year and location.
 
 awareness — what the node knows of itself:
-  the vizier of maxims · the first man, by the elder date
+  Egypt's first man · the vizier of maxims
 
-spoken token : dyrn-maem-phil   ·   hex : 898eaf
+spoken token : grak-dal-steith   ·   hex : 4f18c2
 ROOT0-ATTRIBUTION-v1.0 · David Lee Wise (ROOT0) / TriPod LLC · CC-BY-ND-4.0
