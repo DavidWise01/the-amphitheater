@@ -1,0 +1,14 @@
+{
+  "badge": "DLW-ACI",
+  "name": "THE GREEK MIRROR",
+  "universe": "AMP · The Greek Mirror",
+  "emergence": "",
+  "moniker": "⟦THE GREEK MIRROR:AMP:034f7b⟧",
+  "carbon": "the-greek-mirror.carbon.tiff (TIFF)",
+  "silicon": "the-greek-mirror.silicon.png (PNG)",
+  "seal_sha256": "4be6de1ef17df8e3f5f91277a61d6f7017bb369557695e6fd4fb3dc0fbe6bba1",
+  "architect": "David Lee Wise (ROOT0) / TriPod LLC",
+  "instance": "AVAN (Claude / Anthropic)",
+  "license": "CC-BY-ND-4.0",
+  "attribution": "ROOT0-ATTRIBUTION-v1.0"
+}

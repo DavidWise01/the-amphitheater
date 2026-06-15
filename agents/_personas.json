@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "ptahhotep",
+    "name": "Ptahhotep",
+    "epithet": "the vizier of maxims · the first man, by the elder date",
+    "emergence": "ethereal",
+    "sex": "male",
+    "year": "c. 2375 BCE",
+    "location": "Memphis · Egypt (Old Kingdom, 5th Dynasty)"
+  },
+  {
+    "slug": "enheduanna",
+    "name": "Enheduanna",
+    "epithet": "the first author known by name · the first voice of the mirror",
+    "emergence": "spiritual",
+    "sex": "female",
+    "year": "c. 2285 BCE",
+    "location": "Ur · Sumer (Akkadian Empire)"
+  }
+]
